@@ -1,31 +1,40 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { nanoid } from 'nanoid'
 import './App.css'
 import Dice from './Components/dice'
 
 
-function App() {
 
-  const allNewDice=()=>{
+function App() {
+   const allNewDice=()=>{
      const numArray=[];
 
         for(let i=0;i<10;i++){
         let random= Math.floor(Math.random()*(7-1)+1)
-        numArray.push(random);
+        numArray.push({value:random, isHeld:false, id:nanoid()});
         }
 
       return numArray;
   }
 
-console.log(allNewDice(1,6))
+const handleOnHeld=(itemId)=>{
+  console.log("I was clicked",itemId)
+   
+  setDice(oldDice=>oldDice.map(die=>{
+    return die.id===itemId?{...die,isHeld:!die.isHeld}:die
+  }))
+ 
 
-  const [value, setValue] = useState(1);
-  const [dice,setDice]=useState(allNewDice());
+}
 
-  const diceElements=dice.map((dice)=><Dice value={dice}/>)
+  const [dice,setDice]=useState(allNewDice);
+
+  console.log(dice)
+
+  const diceElements=dice.map((dice)=><Dice key={dice.id} id={dice.id} handleOnHeld={handleOnHeld} isHeld={dice.isHeld} value={dice.value}/>)
 
   const handleRoll=()=>{
-    setDice(prevState=>allNewDice());
+    setDice(allNewDice());
   }
 
   return (
