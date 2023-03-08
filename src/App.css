@@ -62,6 +62,11 @@ html{
   cursor: pointer;
 }
 
+.dice:hover{
+  box-shadow: 3px 10px 20px 1px rgba(0, 0, 0, 0.32);
+  
+}
+
 .dice-number{
     font-family: 'Karla';
     font-size: 24px;
@@ -76,7 +81,7 @@ html{
 }
 
 .dice-container {
-  margin-top: 100px;
+  margin-top: 30px;
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
   gap: 40px;
@@ -84,7 +89,7 @@ html{
 /*************************roll-button********************/
 
 .roll-button{
-  margin-top:30px;
+  margin-top:40px;
   width:80px;
   background-color: #5035FF;
   box-shadow: 0px 3.2px 7.68px rgba(0, 0, 0, 0.18);
@@ -106,4 +111,24 @@ html{
 
 .roll-button:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
+}
+
+/************Heading and Text***********/
+
+.heading{
+  font-family: Karla;
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 30px;
+  letter-spacing: -0.03em;
+  text-align: center;
+}
+
+.text{
+  font-family: Inter;
+  font-size: 10px;
+  width:300px;
+  line-height: 16px;
+  letter-spacing: -0.03em;
+  text-align: center;
 }
