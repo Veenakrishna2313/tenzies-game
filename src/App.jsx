@@ -49,11 +49,16 @@ function App() {
   const diceElements=dice.map((dice)=><Dice key={dice.id} id={dice.id} handleOnHeld={handleOnHeld} isHeld={dice.isHeld} value={dice.value}/>)
 
   const handleRoll=()=>{
-
-    setDice((prevState)=>prevState.map(die=>{
-         
-     return die.isHeld?die:generateNewDice()
-    }));
+      if(!tenzies){
+      setDice((prevState)=>prevState.map(die=>{
+      return die.isHeld?die:generateNewDice();     
+    }))
+      }
+      else{
+        setTenzies(false);
+        setDice(allNewDice())
+      }
+   
   }
 
   return (
