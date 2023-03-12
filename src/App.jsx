@@ -23,6 +23,7 @@ function App() {
 
   const [dice,setDice]=useState(allNewDice);
   const [tenzies,setTenzies]=useState(false);
+  const [noOfRolls,setNoOfRolls]=useState(0)
 
   useEffect(()=>{
     
@@ -50,13 +51,16 @@ function App() {
 
   const handleRoll=()=>{
       if(!tenzies){
+      setNoOfRolls(prevState=>prevState+1)  
       setDice((prevState)=>prevState.map(die=>{
       return die.isHeld?die:generateNewDice();     
     }))
       }
       else{
         setTenzies(false);
-        setDice(allNewDice())
+        setDice(allNewDice());
+        setNoOfRolls(0) 
+       
       }
    
   }
@@ -71,7 +75,8 @@ function App() {
         <div className='dice-container'>
         {diceElements}
         </div>
-      <button className='roll-button' onClick={handleRoll}>{tenzies?"New Game": "Roll"}</button>   
+      <button className='roll-button' onClick={handleRoll}>{tenzies?"New Game": "Roll"}</button>  
+      <p className='text'>You took <b>{noOfRolls} </b>  Rolls to win!!</p> 
       </div>
     </div>
     
