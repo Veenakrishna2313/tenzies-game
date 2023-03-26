@@ -66,9 +66,9 @@ function App() {
   }
 
   return (
-
-    <div className="App">
-    {tenzies && <Confetti />}
+<>
+  {tenzies && <Confetti />}
+    <div className="App">   
     <div className='main-container'>
       <h1 className='heading'>Tenzies</h1>
         <p className='text'>Roll until all dice are the same. Click each die to freeze it at its current value between rolls.</p>
@@ -79,7 +79,7 @@ function App() {
       <p className='text'>You took <b>{noOfRolls} </b>  Rolls to win!!</p> 
       </div>
     </div>
-    
+    </>
   )
 }
 
